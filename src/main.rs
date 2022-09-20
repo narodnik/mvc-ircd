@@ -155,6 +155,7 @@ impl Model {
             if !self.event_map.contains_key(&prev_event) {
                 remaining_orphans.push(orphan);
 
+                // BIGTODO #1:
                 // TODO: We need to fetch missing ancestors from the network
                 // Trigger get_blocks() request
 
@@ -172,13 +173,14 @@ impl Model {
                 children: Mutex::new(Vec::new()),
             });
 
+            // BIGTODO #2:
             // Reject events which attach to forks too low in the chain
             // At some point we ignore all events from old branches
-            let depth = self.find_ancestor_depth(node.clone(), self.find_head().await);
-            if depth > 10 {
-                // Discard
-                continue;
-            }
+            //let depth = self.find_ancestor_depth(node.clone(), self.find_head().await);
+            //if depth > 10 {
+            //    // Discard
+            //    continue;
+            //}
 
             parent.children.lock().await.push(node.clone());
             // Add node to the table
