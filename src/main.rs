@@ -321,7 +321,10 @@ impl View {
     }
 
     fn process(model: &Model) {
-        // Walk down all chains and get unseen events
+        // This does 2 passes:
+        // 1. Walk down all chains and get unseen events
+        // 2. Order those events according to timestamp
+        // Then the events are replayed to the IRC client
     }
 }
 
